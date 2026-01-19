@@ -27,12 +27,12 @@
 - unattended-upgrades: automatische Security-Updates (Auto-Reboot bewusst deaktiviert)
 
 ## Repo-Inhalt (Originale Snapshots vom Server)
-- `system_check.sh` – Daily system check script
-- `configs/cron.txt` – Cron schedule (08:00) + logfile redirect
-- `configs/ufw_status_verbose.txt` – UFW Snapshot (inbound nur 22/tcp & 80/tcp)
-- `configs/sshd_effective_settings.txt` – Effective SSH settings (root login off, password auth off, pubkey auth on)
-- `configs/fail2ban_status.txt` – Fail2ban Status (jail: sshd)
-- `configs/logrotate_systemcheck_check.txt` – Logrotate-Regel für `system_check.log`
-- `configs/system_check_log_listing.txt` – Rotation-Beleg (`.1.gz` vorhanden)
-- `configs/20auto-upgrades.txt` – Auto-Updates aktiv
-- `configs/50unattended-upgrades_key_settings.txt` – Key Settings (u.a. `Automatic-Reboot "false"`)
+- [`system_check.sh`](system_check.sh) – Daily system check script
+- [`configs/cron.txt`](configs/cron.txt) – Cron schedule (08:00) + logfile redirect
+- [`configs/ufw_status_verbose.txt`](configs/ufw_status_verbose.txt) – UFW Snapshot (inbound nur 22/tcp & 80/tcp)
+- [`configs/sshd_effective_settings.txt`](configs/sshd_effective_settings.txt) – Effective SSH settings (root login off, password auth off, pubkey auth on)
+- [`configs/fail2ban_status.txt`](configs/fail2ban_status.txt) – Fail2ban Status (jail: sshd)
+- [`configs/logrotate_systemcheck_check.txt`](configs/logrotate_systemcheck_check.txt) – Logrotate-Regel für `system_check.log`
+- [`configs/system_check_log_listing.txt`](configs/system_check_log_listing.txt) – Rotation-Beleg (`.1.gz` vorhanden)
+- [`configs/20auto-upgrades.txt`](configs/20auto-upgrades.txt) – Auto-Updates aktiv
+- [`configs/50unattended-upgrades_key_settings.txt`](configs/50unattended-upgrades_key_settings.txt) – Key Settings (u.a. `Automatic-Reboot "false"`)
