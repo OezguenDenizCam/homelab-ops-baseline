@@ -38,6 +38,53 @@ Fokus: **Linux/IT Operations**, **Security-Basics (Hardening/Logging)** und **ei
 - Netzwerk/Port-Checks: `ss`, `curl`
 - Logs: `journalctl`, `/var/log`, Apache access/error logs
 
+## Störungsfall-Simulation (Outage Drill): HTTP lokal OK (200), von außen nicht erreichbar
+Ich habe den Fehler bewusst erzeugt bzw. reproduziert, um einen realistischen „local works, remote fails“-Fall zu üben.
+
+- **Symptom:** Auf dem Server liefert `curl` lokal **HTTP 200**, aber von außen (Windows) ist HTTP nicht erreichbar.
+- **Ziel:** Differenzieren zwischen **Service-Problem** vs. **Netzwerk/Firewall-Problem**.
+
+### Vorgehen (Workflow)
+1) **Lokaler HTTP-Check auf dem Server**
+   - `curl -I http://127.0.0.1`
+   - `curl -I http://<server-ip>`
+   - Ergebnis: **HTTP 200** → Apache läuft grundsätzlich.
+
+2) **Listener/Binding prüfen**
+   - `ss -tulpn | grep :80`
+   - Erwartung: Apache hört auf `0.0.0.0:80` oder `<server-ip>:80` (nicht nur `127.0.0.1:80`)
+
+3) **Externer Check von Windows (PowerShell)**
+   - `curl.exe -I http://<server-ip>`
+   - Ergebnis: **keine Verbindung / Timeout** → Problem liegt sehr wahrscheinlich **zwischen Client und Server** (Firewall/Netzwerk).
+
+4) **Firewall prüfen**
+   - `sudo ufw status verbose`
+   - Erwartung: `80/tcp ALLOW IN`
+
+### Fix (typisch)
+- Wenn Port 80 nicht erlaubt war:
+  - `sudo ufw allow 80/tcp`
+  - `sudo ufw reload`
+
+### Verifikation
+- `sudo ufw status verbose` → `80/tcp ALLOW IN`
+- Windows: `curl.exe -I http://<server-ip>` → HTTP-Response kommt zurück
+- Optional: `ss -tulpn | grep :80` + Apache logs check
+
+### Evidence (Snapshots)
+- Apache Status: [`configs/apache2_systemctl_status.txt`](configs/apache2_systemctl_status.txt)
+- Port 80 Listener: [`configs/ss_listening_80.txt`](configs/ss_listening_80.txt)
+- Local curl (200): [`configs/curl_localhost.txt`](configs/curl_localhost.txt)
+- Server-IP curl: [`configs/curl_server_ip.txt`](configs/curl_server_ip.txt)
+- UFW Status: [`configs/ufw_status_verbose.txt`](configs/ufw_status_verbose.txt)
+
+### Lernpunkt
+- **Lokaler 200** beweist: Service läuft.
+- **Externer Fail** beweist: Netzwerkpfad/Firewall/Binding ist der Engpass.
+- Deshalb immer: **local test + external test + firewall/listener check**.
+
+
 ---
 
 ## Automation & Monitoring Basics
