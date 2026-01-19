@@ -68,3 +68,14 @@ Das Script läuft auf meinem Ubuntu-Server (VM) per Cron täglich um 08:00 und s
 - [`configs/system_check_log_listing.txt`](configs/system_check_log_listing.txt) – Rotation-Beleg (`.1.gz` vorhanden)
 - [`configs/20auto-upgrades.txt`](configs/20auto-upgrades.txt) – Auto-Updates aktiv
 - [`configs/50unattended-upgrades_key_settings.txt`](configs/50unattended-upgrades_key_settings.txt) – Key Settings (u.a. `Automatic-Reboot "false"`)
+
+- ## Was ich dabei gelernt habe
+- Ubuntu Server in VMware sauber aufsetzen und Netzwerk so konfigurieren, dass die VM zuverlässig erreichbar ist
+- SSH Hardening praktisch umsetzen (Key-only, Root-Login aus, Passwortauth aus) und die **wirksamen** Einstellungen verifizieren (`sshd -T`)
+- Firewall-Regeln als Baseline setzen (UFW: default deny incoming / allow outgoing) und nur benötigte Ports freigeben (22/80)
+- Brute-Force-Schutz mit Fail2ban verstehen (Jail `sshd`, Logquelle `/var/log/auth.log`) und Status/Filter/Actions prüfen
+- Standard-Troubleshooting im Linux-Betrieb: Services (`systemctl`), Ports/Sockets (`ss`), HTTP-Checks (`curl`), Logs (`journalctl`, `/var/log`)
+- Automatisierung mit Bash + Cron: wiederholbare Checks per Script, Ausgabe/Fehler sauber in Logfiles schreiben (`>>` und `2>&1`)
+- Log-Hygiene mit Logrotate: Rotation, Komprimierung und Aufbewahrung (rotate 7) nachvollziehbar verifizieren (`.gz` vorhanden)
+- Patch-Management Basics: unattended-upgrades aktivieren und eine sichere Entscheidung treffen (Auto-Reboot bewusst deaktiviert)
+
