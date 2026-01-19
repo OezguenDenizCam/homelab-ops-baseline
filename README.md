@@ -7,7 +7,7 @@ Fokus: **Linux/IT Operations**, **Security-Basics (Hardening/Logging)** und **ei
 
 ---
 
-## Quick Overview
+## Kurzüberblick
 - **Server:** Ubuntu Server (VMware)
 - **Hardening:** SSH (Key-only, Root off, Password off), UFW, Fail2ban
 - **Ops:** Systemcheck-Script + Cron, Logrotate, unattended-upgrades
@@ -49,7 +49,7 @@ Fokus: **Linux/IT Operations**, **Security-Basics (Hardening/Logging)** und **ei
 
 ---
 
-## How it’s used (on the server)
+## So wird es auf dem Server genutzt
 Das Script läuft auf meinem Ubuntu-Server (VM) per Cron täglich um 08:00 und schreibt in ein Logfile.
 
 - Script: [`system_check.sh`](system_check.sh)
