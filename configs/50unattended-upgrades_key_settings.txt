@@ -1,0 +1,23 @@
+6:Unattended-Upgrade::Allowed-Origins {
+21:Unattended-Upgrade::Package-Blacklist {
+44:Unattended-Upgrade::DevRelease "auto";
+50://Unattended-Upgrade::AutoFixInterruptedDpkg "true";
+56://Unattended-Upgrade::MinimalSteps "true";
+67://Unattended-Upgrade::InstallOnShutdown "false";
+73://Unattended-Upgrade::Mail "";
+79://Unattended-Upgrade::MailReport "on-change";
+83://Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
+86://Unattended-Upgrade::Remove-New-Unused-Dependencies "true";
+90://Unattended-Upgrade::Remove-Unused-Dependencies "false";
+94://Unattended-Upgrade::Automatic-Reboot "false";
+97:// when Unattended-Upgrade::Automatic-Reboot is set to true
+98://Unattended-Upgrade::Automatic-Reboot-WithUsers "true";
+103://Unattended-Upgrade::Automatic-Reboot-Time "02:00";
+110:// Unattended-Upgrade::SyslogEnable "false";
+113:// Unattended-Upgrade::SyslogFacility "daemon";
+117:// Unattended-Upgrade::OnlyOnACPower "true";
+121:// Unattended-Upgrade::Skip-Updates-On-Metered-Connections "true";
+124:// Unattended-Upgrade::Verbose "false";
+128:// Unattended-Upgrade::Debug "false";
+131:// Unattended-Upgrade::Allow-downgrade "false";
+143:// Unattended-Upgrade::Allow-APT-Mark-Fallback "true";
