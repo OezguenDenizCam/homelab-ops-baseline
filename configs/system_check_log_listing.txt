@@ -1,0 +1,2 @@
+-rw-rw-r-- 1 deniz deniz   0 Jan 14 11:47 /home/deniz/system_check.log
+-rw-rw-r-- 1 deniz deniz 409 Jan 14 11:19 /home/deniz/system_check.log.1.gz
