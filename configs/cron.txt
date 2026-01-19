@@ -1,0 +1,2 @@
+# Run daily at 08:00
+0 8 * * * /home/deniz/system_check.sh >> /home/deniz/system_check.log 2>&1
