@@ -1,0 +1,1 @@
+tcp   LISTEN 0      511                        *:80              *:*    users:(("apache2",pid=1092,fd=4),("apache2",pid=1091,fd=4),("apache2",pid=1018,fd=4))
